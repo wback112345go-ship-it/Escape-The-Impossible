@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تطبيقنا السنع</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .card {
+            background-color: #1e1e1e;
+            border: 1px solid #333;
+            padding: 35px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            max-width: 350px;
+            width: 90%;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #00ffcc;
+        }
+        p {
+            font-size: 16px;
+            color: #b0b0b0;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: linear-gradient(45deg, #00ffcc, #0077ff);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1 id="title">يا هلا بك! 👋</h1>
+        <p id="msg">منور يا الغالي، هذا تطبيقك الخاص وبدون أي إعلانات.</p>
+        <button class="btn" onclick="changeText()">اضغط هنا</button>
+    </div>
+
+    <script>
+        function changeText() {
+            document.getElementById("title").innerText = "كفو والله! 🚀";
+            document.getElementById("msg").innerText = "اشتغل التطبيق وضبطت الأمور معك زي الحلاوة.";
+        }
+    </script>
+
+</body>
+</html>
+
