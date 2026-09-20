@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>عربي | تفيوبات</title>
+<title>THE-LAST-SHIFT | لعبة الـ The Last Shift</title>
 <style>
     * {
         margin: 0;
@@ -26,7 +26,7 @@
         border-radius: 20px;
         text-align: center;
         box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        max-width: 350px;
+        max-width: 380px;
         width: 90%;
     }
     h1 {
@@ -51,23 +51,22 @@
         border: none;
         cursor: pointer;
         font-size: 16px;
+        margin-top: 10px;
+        transition: 0.3s;
+    }
+    .btn:hover {
+        opacity: 0.9;
+        transform: scale(1.05);
     }
 </style>
 </head>
 <body>
 
 <div class="card">
-    <h1 id="title">اضغط هنا 👋</h1>
-    <p id="msg">أهلاً بك يا زبرجو داخل تطبيقك الجديد على الموبايل!</p>
-    <button class="btn" onclick="changeText()">انه ضغطا!</button>
+    <h1 id="title">THE-LAST-SHIFT 🚀</h1>
+    <p id="msg">جاهز لخوض التحدي؟ حمل نسختك الآن واستمتع باللعبة على جهازك!</p>
+    <a href="#" class="btn" download>تحميل اللعبة 📥</a>
 </div>
-
-<script>
-function changeText() {
-    document.getElementById("title").innerText = "تم بنجاح ولتك! 🚀";
-    document.getElementById("msg").innerText = "تم إدراج روم ألا تلاقى وتفيوبات في جيتهاب بنجاح!";
-}
-</script>
 
 </body>
 </html>
