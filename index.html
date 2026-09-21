@@ -2,17 +2,151 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE-LAST-SHIFT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>آخر وردية - The Last Shift</title>
     <style>
-        body { background-color: #0d1117; color: #fff; font-family: Arial, sans-serif; text-align: center; padding-top: 80px; }
-        .btn { background-color: #238636; color: white; padding: 15px 25px; font-size: 18px; text-decoration: none; border-radius: 8px; display: inline-block; margin: 10px; }
-        .btn-apk { background-color: #1f6feb; }
+        * {
+            box-sizing: border-box;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #05070b;
+            color: #e2e8f0;
+            font-family: Tahoma, sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .screen {
+            display: none;
+            width: 100%;
+            height: 100%;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
+            position: absolute;
+            background: #05070b;
+        }
+        .active {
+            display: flex;
+        }
+        h1 {
+            color: #ff3333;
+            font-size: 28px;
+            margin-bottom: 5px;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+        }
+        .subtitle {
+            color: #94a3b8;
+            font-size: 14px;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+        .menu-btn {
+            background: #111827;
+            color: #f8fafc;
+            border: 1px solid #374151;
+            padding: 12px 20px;
+            width: 80%;
+            max-width: 280px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 6px 0;
+            transition: 0.2s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        .menu-btn:active {
+            transform: scale(0.97);
+            background: #1f2937;
+            border-color: #ff3333;
+            color: #ff3333;
+        }
+        .primary-btn {
+            background: #990000;
+            border-color: #ff0000;
+        }
+        .room-box {
+            background: #0f172a;
+            border: 1px solid #1e293b;
+            padding: 15px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 320px;
+            margin-bottom: 15px;
+        }
+        .random-quote {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #ef4444;
+            min-height: 25px;
+        }
     </style>
 </head>
 <body>
-    <h1>لعبة THE-LAST-SHIFT</h1>
-    <p>حمل اللعبة مباشرة لجهازك</p>
-    <a href="game.apk" class="btn btn-apk" download>تحميل ملف الـ APK</a>
+
+    <!-- الواجهة الرئيسية -->
+    <div id="main-menu" class="screen active">
+        <h1>آخر وردية</h1>
+        <div class="subtitle">«وردّيتكم الأخيرة بدأت.»</div>
+
+        <button class="menu-btn primary-btn" onclick="showScreen('room-menu')">▶ ابدأ الوردية</button>
+        <button class="menu-btn" onclick="showScreen('room-menu')">👥 إنشاء / انضمام غرفة</button>
+        <button class="menu-btn" onclick="alert('السجل: قريباً اكتشاف القواعد والأحداث...')">📖 السجل</button>
+        <button class="menu-btn" onclick="alert('الإحصائيات: الورديات المكتملة (0)')">🏆 الإحصائيات</button>
+        <button class="menu-btn" onclick="alert('الإعدادات قيد التعديل...')">⚙ الإعدادات</button>
+    </div>
+
+    <!-- قائمة الغرفة -->
+    <div id="room-menu" class="screen">
+        <h1>غرفة الانتظار</h1>
+        <div class="room-box">
+            <p>رمز الغرفة: <span style="color: #38bdf8;">7K4-913</span></p>
+            <hr style="border:0; border-top:1px solid #334155; margin:10px 0;">
+            <p style="text-align: right; margin: 5px 0;">● أنت (القائد)</p>
+            <p style="text-align: right; margin: 5px 0; color: #64748b;">○ في انتظار لاعب...</p>
+            <p style="text-align: right; margin: 5px 0; color: #64748b;">○ في انتظار لاعب...</p>
+        </div>
+
+        <button class="menu-btn primary-btn" onclick="alert('جاري بدء الوردية المشؤومة...')">[ بدء الوردية ]</button>
+        <button class="menu-btn" onclick="showScreen('main-menu')">↩ عودة</button>
+
+        <div id="horror-quote" class="random-quote">«تأكدوا من عددكم قبل أن تبدأوا.»</div>
+    </div>
+
+    <script>
+        // دالة التنقل بين القوائم
+        function showScreen(screenId) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById(screenId).classList.add('active');
+        }
+
+        // نظام الجمل المرعبة العشوائية أثناء الانتظار
+        const quotes = [
+            "«تأكدوا من عددكم قبل أن تبدأوا.»",
+            "«دخل لاعب جديد.»",
+            "«دخل لاعب جديد... لكن الغرفة ممتلئة.»",
+            "«هناك صوت يخدش الجدار خلفك... لا تلتفت.»"
+        ];
+
+        setInterval(() => {
+            const quoteEl = document.getElementById('horror-quote');
+            if(document.getElementById('room-menu').classList.contains('active')) {
+                const randomText = quotes[Math.floor(Math.random() * quotes.length)];
+                quoteEl.textContent = randomText;
+            }
+        }, 5000);
+    </script>
+
 </body>
 </html>
+
